@@ -3,7 +3,7 @@ Summary: Riverbanks's python sip
 Version: 4.7
 Release: %mkrel 1
 Epoch: 1
-Group: Development 
+Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/sip/index.php
 Source0: http://www.riverbankcomputing.com/Downloads/sip4/sip-%{version}.tar.gz
 License: GPL
