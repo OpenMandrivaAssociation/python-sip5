@@ -7,6 +7,7 @@ Group: Development/Python
 URL: http://www.riverbankcomputing.co.uk/sip/index.php
 Source0: http://www.riverbankcomputing.com/Downloads/sip4/sip-%{version}.tar.gz
 License: GPL
+BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
 %py_requires -d
 
