@@ -12,9 +12,9 @@ BuildRequires: bzip2-devel
 %py_requires -d
 
 %description
-SIP is a tool that makes it very easy to create Python bindings for C and C++ libraries. It was
-originally developed to create PyQt, the Python bindings for the Qt toolkit, but can be used to
-create bindings for any C or C++ library.
+SIP is a tool that makes it very easy to create Python bindings for C and C++
+libraries. It was originally developed to create PyQt, the Python bindings for
+the Qt toolkit, but can be used to create bindings for any C or C++ library.
 
 %files 
 %defattr(-,root,root)
