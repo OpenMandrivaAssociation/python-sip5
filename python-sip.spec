@@ -31,7 +31,7 @@ create bindings for any C or C++ library.
 
 %build
 %{__python} configure.py
-%{make} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
+%{make} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC"
 
 %install
 %{__rm} -rf %{buildroot}
