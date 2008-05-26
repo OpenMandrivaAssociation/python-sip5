@@ -1,7 +1,7 @@
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.7.6
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -30,6 +30,12 @@ create bindings for any C or C++ library.
 %setup -q -n sip-%{version}
 
 %build
+
+#  Don't use X11R6 prefix for includes neither libraries by default.
+for file in specs/linux-*; do
+    perl -p -i -e "s@/X11R6/@/@g" $file
+done
+
 %{__python} configure.py
 %{make} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC"
 
