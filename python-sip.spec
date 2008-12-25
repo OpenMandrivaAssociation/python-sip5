@@ -1,7 +1,7 @@
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.7.9
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
