@@ -1,7 +1,7 @@
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.7.9
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -37,7 +37,8 @@ for file in specs/linux-*; do
 done
 
 %{__python} configure.py
-%{make} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC"
+%define _disable_ld_no_undefined 1
+%{make} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py_ver}"
 
 %install
 %{__rm} -rf %{buildroot}
