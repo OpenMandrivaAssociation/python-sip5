@@ -1,11 +1,12 @@
+%define date 20090430
 Name: python-sip
 Summary: Riverbanks's python sip
-Version: 4.7.9
-Release: %mkrel 3
+Version: 4.8
+Release: %mkrel 0.%date.1
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
-Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}.tar.gz
+Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}-snapshot-20090430.tar.gz
 License: GPLv2+
 BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
@@ -27,7 +28,7 @@ create bindings for any C or C++ library.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n sip-%{version}
+%setup -q -n sip-%{version}-snapshot-20090430
 
 %build
 
