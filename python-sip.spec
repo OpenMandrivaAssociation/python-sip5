@@ -3,11 +3,11 @@
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.8
-Release: %mkrel 0.%date.1
+Release: %mkrel 0.%date.2
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
-Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}-snapshot-20090430.tar.gz
+Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%{version}-snapshot-%date.tar.gz
 License: GPLv2+
 BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
