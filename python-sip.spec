@@ -29,7 +29,7 @@ create bindings for any C or C++ library.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n sip-%{version}-snapshot-20090430
+%setup -q -n sip-%{version}-snapshot-%date
 
 %build
 
