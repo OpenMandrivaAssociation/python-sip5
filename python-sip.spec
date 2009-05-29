@@ -1,4 +1,5 @@
-%define date 20090430
+%define date 20090528
+
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.8
