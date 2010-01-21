@@ -1,13 +1,11 @@
-%define snapshot 20100102
-
 Name: python-sip
 Summary: Riverbanks's python sip
 Version: 4.10
-Release: %mkrel 0.%snapshot.1
+Release: %mkrel 1
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
-Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%version-snapshot-%snapshot.tar.gz
+Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%version.tar.gz
 License: GPLv2+
 BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
@@ -29,7 +27,7 @@ create bindings for any C or C++ library.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n sip-%version-snapshot-%snapshot
+%setup -q -n sip-%version
 
 %build
 
