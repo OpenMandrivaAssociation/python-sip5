@@ -1,6 +1,6 @@
 Name: python-sip
 Summary: Riverbanks's python sip
-Version: 4.11
+Version: 4.11.2
 Release: %mkrel 1
 Epoch: 1
 Group: Development/Python 
