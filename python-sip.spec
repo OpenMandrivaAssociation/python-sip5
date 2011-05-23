@@ -1,6 +1,6 @@
 Name: python-sip
 Summary: Riverbanks's python sip
-Version: 4.12.2
+Version: 4.12.3
 Release: %mkrel 1
 Epoch: 1
 Group: Development/Python 
@@ -9,7 +9,7 @@ Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%version.ta
 License: GPLv2+
 BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
-%py_requires -d
+BuildRequires: python-devel
 Obsoletes: sip < %version
 Obsoletes: sip-devel < %version
 
