@@ -1,13 +1,12 @@
 Name: python-sip
 Summary: Riverbanks's python sip
-Version: 4.13
+Version: 4.13.2
 Release: 1
 Epoch: 1
 Group: Development/Python 
 URL: http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0: http://www.riverbankcomputing.com/static/Downloads/sip4/sip-%version.tar.gz
 License: GPLv2+
-BuildRoot: %_tmppath/%name-%version-%release-root
 BuildRequires: bzip2-devel
 BuildRequires: python-devel
 Obsoletes: sip < %version
@@ -41,8 +40,4 @@ done
 %{make} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py_ver}"
 
 %install
-%{__rm} -rf %{buildroot}
 %{makeinstall_std}
-
-%clean
-%{__rm} -rf %{buildroot}
