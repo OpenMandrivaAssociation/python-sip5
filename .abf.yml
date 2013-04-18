@@ -1,4 +1,2 @@
-removed_sources:
-  sip-4.14.2.tar.gz: ce836f600b6c8c2c7700d7902492ba6d96404fd9
 sources:
-  sip-4.14.3.tar.gz: 51b913205e1a31e65eea154437438b9c9b5c36d8
+  sip-4.14.5.tar.gz: b780dc3469bf36bca9bbaafe17c8493c67af81c1
