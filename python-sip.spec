@@ -1,14 +1,14 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
+Epoch:		1
 Version:	4.15.3
 Release:	1
-Epoch:		1
 Group:		Development/Python
 License:	GPLv2+
-URL:		http://www.riverbankcomputing.co.uk/software/sip/intro
+Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://switch.dl.sourceforge.net/project/pyqt/sip/sip-%{version}/sip-%{version}.tar.gz
 BuildRequires:	bzip2-devel
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python)
 Obsoletes:	sip < %{version}
 Obsoletes:	sip-devel < %{version}
 
@@ -26,7 +26,7 @@ create bindings for any C or C++ library.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n sip-%{version}
+%setup -qn sip-%{version}
 #  Don't use X11R6 prefix for includes neither libraries by default.
 for file in specs/linux-*; do
     %__perl -p -i -e "s@/X11R6/@/@g" $file
