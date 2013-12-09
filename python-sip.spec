@@ -7,6 +7,7 @@ Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://switch.dl.sourceforge.net/project/pyqt/sip/sip-%{version}/sip-%{version}.tar.gz
+Source1:	python-sip.rpmlintrc
 BuildRequires:	bzip2-devel
 BuildRequires:	pkgconfig(python)
 Obsoletes:	sip < %{version}

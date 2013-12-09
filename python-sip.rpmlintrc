@@ -1,0 +1,2 @@
+# add filter
+addFilter("E: devel-file-in-non-devel-package")
