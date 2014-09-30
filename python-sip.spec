@@ -3,11 +3,13 @@
 %define sip_api_minor 1
 %define sip_api       %{sip_api_major}.%{sip_api_minor}
 
+%define _disable_ld_no_undefined 1
+
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.16.1
-Release:	4
+Version:	4.16.3
+Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -32,9 +34,25 @@ create bindings for any C or C++ library.
 %{_sysconfdir}/rpm/macros.d/sip.macros
 
 #------------------------------------------------------------
+%package -n python2-sip
+Summary:        Riverbanks' python sip
 
+%description -n python2-sip
+SIP is a tool that makes it very easy to create Python bindings
+for C and C++ libraries. It was originally developed to create PyQt,
+the Python bindings for the Qt toolkit, but can be used to
+create bindings for any C or C++ library.
+
+%files -n python2-sip
+%{_bindir}/python2-sip
+%{py2_platsitedir}/s*
+%{py2_incdir}/sip.h
+
+#------------------------------------------------------------
 %prep
-%setup -qn sip-%{version}
+%setup -qc sip-%{version}
+mv sip-%{version} python3
+cp -a python3 python2
 
 # Check API minor/major numbers
 export real_api_major=`grep SIP_API_MAJOR_NR siplib/sip.h.in|head -n1|awk -F' ' '{print $3}'`
@@ -54,12 +72,26 @@ for file in specs/linux-*; do
 done
 
 %build
-%__python configure.py
-%define _disable_ld_no_undefined 1
-%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py_ver}"
+
+pushd python3
+%__python3 configure.py
+%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py3_ver}"
+popd
+
+pushd python2
+%__python2 configure.py
+%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py2_ver}"
+popd
 
 %install
+pushd python2
 %makeinstall_std
+mv %{buildroot}%{_bindir}/sip %{buildroot}%{_bindir}/python2-sip
+popd
+
+pushd python3
+%makeinstall_std
+popd
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpm/macros.d/
 cat > %{buildroot}%{_sysconfdir}/rpm/macros.d/sip.macros << EOF
