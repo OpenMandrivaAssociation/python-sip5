@@ -8,8 +8,8 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.16.3
-Release:	2
+Version:	4.16.4
+Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -69,18 +69,18 @@ fi
 
 #  Don't use X11R6 prefix for includes neither libraries by default.
 for file in specs/linux-*; do
-    %__perl -p -i -e "s@/X11R6/@/@g" $file
+    perl -p -i -e "s@/X11R6/@/@g" $file
 done
 
 %build
 
 pushd python3
-%__python3 configure.py
+python3 configure.py
 %make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py3_ver}"
 popd
 
 pushd python2
-%__python2 configure.py
+python2 configure.py
 %make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py2_ver}"
 popd
 
@@ -101,6 +101,3 @@ cat > %{buildroot}%{_sysconfdir}/rpm/macros.d/sip.macros << EOF
 %%sip_api_minor %{sip_api_minor}
 %%sip_api       %{sip_api_major}.%{sip_api_minor}
 EOF
-
-
-
