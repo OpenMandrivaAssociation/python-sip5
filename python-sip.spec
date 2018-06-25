@@ -13,14 +13,14 @@ Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
 Version:	4.19.10
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://downloads.sourceforge.net/pyqt/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
 Patch0:		sip-4.19.10-destdir.patch
-BuildRequires:	bzip2-devel
+BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python)
 Obsoletes:	sip < %{version}
@@ -90,7 +90,7 @@ for i in python3 qt5-python3 python2 qt5-python2; do
 	echo $i |grep -q python2 && PY=python2 || PY=python
 	echo $i |grep -q qt5 && EXT="--sip-module PyQt5.sip" || EXT=""
 	pushd $i
-	$PY configure.py $EXT
+	$PY configure.py --no-dist-info $EXT
 	%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
 	popd
 done
