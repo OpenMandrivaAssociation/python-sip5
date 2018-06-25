@@ -37,6 +37,7 @@ create bindings for any C or C++ library.
 %files
 %{_bindir}/sip
 %{py_platsitedir}/s*
+%{py_platsitedir}/PyQt5*
 %{py_platsitedir}/__pycache__/*
 %{py_incdir}/sip.h
 %{_sysconfdir}/rpm/macros.d/sip.macros
@@ -53,6 +54,7 @@ create bindings for any C or C++ library.
 
 %files -n python2-sip
 %{_bindir}/python2-sip
+%{py2_platsitedir}/PyQt5*
 %{py2_platsitedir}/s*
 %{py2_incdir}/sip.h
 
@@ -61,7 +63,9 @@ create bindings for any C or C++ library.
 %setup -qc sip-%{version}
 %autopatch -p0
 mv sip-%{version} python3
-cp -a python3 python2
+for i in python2 qt5-python3 qt5-python2; do
+	cp -a python3 $i
+done
 
 # Check API minor/major numbers
 export real_api_major=`grep SIP_API_MAJOR_NR siplib/sip.h.in|head -n1|awk -F' ' '{print $3}'`
@@ -82,25 +86,22 @@ done
 
 %build
 
-pushd python3
-python3 configure.py
-%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py3_ver}"
-popd
-
-pushd python2
-python2 configure.py
-%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" LIBS="%{?ldflags} -lpython%{py2_ver}"
-popd
+for i in python3 qt5-python3 python2 qt5-python2; do
+	echo $i |grep -q python2 && PY=python2 || PY=python
+	echo $i |grep -q qt5 && EXT="--sip-module PyQt5.sip" || EXT=""
+	pushd $i
+	$PY configure.py $EXT
+	%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
+	popd
+done
 
 %install
-pushd python2
-%makeinstall_std
-mv %{buildroot}%{_bindir}/sip %{buildroot}%{_bindir}/python2-sip
-popd
-
-pushd python3
-%makeinstall_std
-popd
+for i in python2 qt5-python2 qt5-python3 python3; do
+	pushd $i
+	%make_install
+	[ "$i" = "python2" ] && mv %{buildroot}%{_bindir}/sip %{buildroot}%{_bindir}/python2-sip
+	popd
+done
 
 mkdir -p %{buildroot}%{_sysconfdir}/rpm/macros.d/
 cat > %{buildroot}%{_sysconfdir}/rpm/macros.d/sip.macros << EOF

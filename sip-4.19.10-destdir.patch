@@ -10,3 +10,17 @@ diff -up sip-4.19.10/configure.py.omv~ sip-4.19.10/configure.py
              distinfo_dir)
  
      if opts.use_qmake:
+--- sip-4.19.10/mk_distinfo.py	2018-06-23 11:44:14.000000000 +0200
++++ sip-4.19.10/mk_distinfo.py	2018-06-25 17:35:10.144947918 +0200
+@@ -98,7 +98,10 @@
+         else:
+             fn_name = fn
+ 
+-        fn_f = open(fn, 'rb')
++        try:
++            fn_f = open(os.getenv("DESTDIR") + fn, 'rb')
++        except:
++            fn_f = open(fn, 'rb')
+         data = fn_f.read()
+         fn_f.close()
+ 
