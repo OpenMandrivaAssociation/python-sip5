@@ -12,20 +12,21 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.19.7
-Release:	2
+Version:	4.19.10
+Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://downloads.sourceforge.net/pyqt/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
+Patch0:		sip-4.19.10-destdir.patch
 BuildRequires:	bzip2-devel
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python)
 Obsoletes:	sip < %{version}
 Obsoletes:	sip-devel < %{version}
 Provides:	sip-api(%{sip_api_major}) = %{sip_api}
-%rename		python3-sip < 1:4.16.4-3
+%rename		python3-sip
 
 %description
 SIP is a tool that makes it very easy to create Python bindings
@@ -36,6 +37,7 @@ create bindings for any C or C++ library.
 %files
 %{_bindir}/sip
 %{py_platsitedir}/s*
+%{py_platsitedir}/__pycache__/*
 %{py_incdir}/sip.h
 %{_sysconfdir}/rpm/macros.d/sip.macros
 
@@ -57,6 +59,7 @@ create bindings for any C or C++ library.
 #------------------------------------------------------------
 %prep
 %setup -qc sip-%{version}
+%autopatch -p0
 mv sip-%{version} python3
 cp -a python3 python2
 
