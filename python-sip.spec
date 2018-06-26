@@ -20,6 +20,7 @@ Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://downloads.sourceforge.net/pyqt/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
 Patch0:		sip-4.19.10-destdir.patch
+Patch1:		sip-4.19.10-py2.patch
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python)
