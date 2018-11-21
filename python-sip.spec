@@ -23,7 +23,7 @@ Source1:	python-sip.rpmlintrc
 #Patch1:		sip-4.19.10-py2.patch
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 Obsoletes:	sip < %{version}
 Obsoletes:	sip-devel < %{version}
 Provides:	sip-api(%{sip_api_major}) = %{sip_api}
