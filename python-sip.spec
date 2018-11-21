@@ -12,15 +12,15 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.19.10
-Release:	3
+Version:	4.19.13
+Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	http://downloads.sourceforge.net/pyqt/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
-Patch0:		sip-4.19.10-destdir.patch
-Patch1:		sip-4.19.10-py2.patch
+#Patch0:		sip-4.19.10-destdir.patch
+#Patch1:		sip-4.19.10-py2.patch
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python)
@@ -91,8 +91,8 @@ for i in python3 qt5-python3 python2 qt5-python2; do
 	echo $i |grep -q python2 && PY=python2 || PY=python
 	echo $i |grep -q qt5 && EXT="--sip-module PyQt5.sip" || EXT=""
 	pushd $i
-	$PY configure.py --no-dist-info $EXT
-	%make CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
+	$PY configure.py --no-dist-info $EXT CC="%_cc" CFLAGS="%{optflags} -fPIC" CXX="%{__cxx}" LINK="%{__cxx}" LINK_SHLIB="%{__cxx}" LFLAGS="%{ldflags}"
+	%make CC=%{__cc} CXX=%{__cxx} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
 	popd
 done
 
