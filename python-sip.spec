@@ -12,7 +12,7 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.19.13
+Version:	4.19.14
 Release:	1
 Group:		Development/Python
 License:	GPLv2+
@@ -92,7 +92,7 @@ for i in python3 qt5-python3 python2 qt5-python2; do
 	echo $i |grep -q qt5 && EXT="--sip-module PyQt5.sip" || EXT=""
 	pushd $i
 	$PY configure.py --no-dist-info $EXT CC="%_cc" CFLAGS="%{optflags} -fPIC" CXX="%{__cxx}" LINK="%{__cxx}" LINK_SHLIB="%{__cxx}" LFLAGS="%{ldflags}"
-	%make CC=%{__cc} CXX=%{__cxx} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
+	%make_build CC=%{__cc} CXX=%{__cxx} CFLAGS="%{optflags} -fPIC" CXXFLAGS="%{optflags} -fPIC" #LIBS="%{?ldflags} -lpython%{py3_ver}"
 	popd
 done
 
