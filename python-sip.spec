@@ -50,7 +50,7 @@ Conflicts:	%{name} < 1:4.19.17-2
 %description -n python-sip-qt5
 Python sip bindings for Qt5.
 
-%files -n python-sip
+%files -n python-sip-qt5
 %{py_platsitedir}/PyQt5*
 
 #------------------------------------------------------------
@@ -77,7 +77,7 @@ Conflicts:	python2-sip < 1:4.19.17-2
 %description -n python2-sip-qt5
 Python2 sip bindings for Qt5.
 
-%files -n python2-sip
+%files -n python2-sip-qt5
 %{py2_platsitedir}/PyQt5*
 
 #------------------------------------------------------------
