@@ -13,7 +13,7 @@ Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
 Version:	4.19.17
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -38,14 +38,24 @@ create bindings for any C or C++ library.
 %files
 %{_bindir}/sip
 %{py_platsitedir}/s*
-%{py_platsitedir}/PyQt5*
 %{py_platsitedir}/__pycache__/*
 %{py_incdir}/sip.h
 %{_sysconfdir}/rpm/macros.d/sip.macros
 
 #------------------------------------------------------------
+%package -n python-sip-qt5
+Summary:	Riverbanks' python sip Qt5
+Conflicts:	%{name} < 1:4.19.17-2
+
+%description -n python-sip-qt5
+Python sip bindings for Qt5.
+
+%files -n python-sip
+%{py_platsitedir}/PyQt5*
+
+#------------------------------------------------------------
 %package -n python2-sip
-Summary:        Riverbanks' python sip
+Summary:	Riverbanks' python sip
 
 %description -n python2-sip
 SIP is a tool that makes it very easy to create Python bindings
@@ -55,9 +65,20 @@ create bindings for any C or C++ library.
 
 %files -n python2-sip
 %{_bindir}/python2-sip
-%{py2_platsitedir}/PyQt5*
 %{py2_platsitedir}/s*
 %{py2_incdir}/sip.h
+
+
+#------------------------------------------------------------
+%package -n python2-sip-qt5
+Summary:	Riverbanks' python sip Qt5
+Conflicts:	python2-sip < 1:4.19.17-2
+
+%description -n python2-sip-qt5
+Python2 sip bindings for Qt5.
+
+%files -n python2-sip
+%{py2_platsitedir}/PyQt5*
 
 #------------------------------------------------------------
 %prep
