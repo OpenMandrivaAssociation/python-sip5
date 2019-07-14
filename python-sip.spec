@@ -12,12 +12,12 @@
 Summary:	Riverbanks' python sip
 Name:		python-sip
 Epoch:		1
-Version:	4.19.17
-Release:	2
+Version:	4.19.18
+Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
-Source0:	http://downloads.sourceforge.net/pyqt/sip-%{version}.tar.gz
+Source0:	https://www.riverbankcomputing.com/static/Downloads/sip/%{version}/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
 #Patch0:		sip-4.19.10-destdir.patch
 #Patch1:		sip-4.19.10-py2.patch
