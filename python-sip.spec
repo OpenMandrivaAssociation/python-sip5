@@ -15,6 +15,7 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	python3dist(setuptools)
 Requires:	python3dist(pytoml)
+Requires:	python3.8dist(pytoml)
 Obsoletes:	sip < %{version}
 Obsoletes:	sip-devel < %{version}
 Provides:	sip-api(%{sip_api_major}) = %{sip_api}
