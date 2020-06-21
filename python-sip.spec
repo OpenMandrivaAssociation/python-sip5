@@ -8,8 +8,6 @@ License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
 Source0:	https://files.pythonhosted.org/packages/b0/5f/ffaa04f8b2f0b5e05dcebc882c1a151895d5ec54f2c9caa95ee003af93ba/sip-5.3.0.tar.gz
 Source1:	python-sip.rpmlintrc
-#Patch0:		sip-4.19.10-destdir.patch
-#Patch1:		sip-4.19.10-py2.patch
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python2)
@@ -36,19 +34,17 @@ create bindings for any C or C++ library.
 %autopatch -p0
 
 %build
-%setup_compile_flags
+%set_build_flags
 
-export LDFLAGS="%{ldflags} -lpython3.8"
-
-python setup.py \
-	build
+export LDFLAGS="%{ldflags} -lpython%{py_ver}"
+%py_build
 
 %install
-python setup.py \
+%{__python} setup.py \
 	install \
 	--root="%{buildroot}" \
 	--record="%{name}.list"
 
 %check
-python setup.py \
+%{__python} setup.py \
 	check
