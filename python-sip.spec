@@ -10,7 +10,6 @@ Source0:	https://files.pythonhosted.org/packages/b0/5f/ffaa04f8b2f0b5e05dcebc882
 Source1:	python-sip.rpmlintrc
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	pkgconfig(python2)
 BuildRequires:	python3dist(setuptools)
 Requires:	python3dist(toml)
 Obsoletes:	sip < %{version}
@@ -42,8 +41,7 @@ export LDFLAGS="%{ldflags} -lpython%{py_ver}"
 %install
 %{__python} setup.py \
 	install \
-	--root="%{buildroot}" \
-	--record="%{name}.list"
+	--root="%{buildroot}" --skip-build --optimize=1
 
 %check
 %{__python} setup.py \
