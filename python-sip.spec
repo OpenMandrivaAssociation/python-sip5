@@ -6,7 +6,7 @@ Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
-Source0:	https://files.pythonhosted.org/packages/b0/5f/ffaa04f8b2f0b5e05dcebc882c1a151895d5ec54f2c9caa95ee003af93ba/sip-5.3.0.tar.gz
+Source0:	https://files.pythonhosted.org/packages/af/68/c603a9d6319ef1126187c42e0b13ac5fcf556d040feded2e574e1a6a27e4/sip-%{version}.tar.gz
 Source1:	python-sip.rpmlintrc
 BuildRequires:	pkgconfig(bzip2)
 BuildRequires:	pkgconfig(python3)
