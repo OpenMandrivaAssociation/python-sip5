@@ -2,7 +2,7 @@ Summary:	Tool for creating Python bindings for C and C++ libraries
 Name:		python-sip
 Epoch:		1
 Version:	5.4.0
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	GPLv2+
 Url:		http://www.riverbankcomputing.co.uk/software/sip/intro
@@ -14,7 +14,6 @@ BuildRequires:	python3dist(setuptools)
 Requires:	python3dist(toml)
 Obsoletes:	sip < %{version}
 Obsoletes:	sip-devel < %{version}
-Provides:	sip-api(%{sip_api_major}) = %{sip_api}
 %rename		python3-sip
 
 %description
